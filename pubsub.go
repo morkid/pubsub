@@ -1,15 +1,15 @@
 package pubsub
 
-type MessageCallback func(c PubSubClient, m []byte)
-type ClientCallback func(c PubSubClient)
+type MessageCallback func(c Client, m []byte)
+type ConnectCallback func(c Client)
 
-// PubSubClient interface
-type PubSubClient interface {
+// Client interface
+type Client interface {
 	// connect to server
 	Connect()
 
 	// on connect callback
-	OnConnect(callback ClientCallback)
+	OnConnect(callback ConnectCallback)
 
 	// publish event
 	Publish(event string, mesage interface{})
